@@ -3,7 +3,7 @@
     <el-container>
       <el-header>
         <span id="head_left">聚美优品后台管理系统</span>
-        <span id="head_right">欢迎：{{$store.state.username}}<a id="postOut" href="/login">退出</a></span>
+        <span id="head_right">欢迎：{{$store.state.username}}<a id="postOut" href="/cms/#/login">退出</a></span>
       </el-header>
       <el-container>
         <el-aside id="aside" width="200px">

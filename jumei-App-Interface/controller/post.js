@@ -6,7 +6,6 @@ var path = require('path');
 var add = async (req,res,next) => {
   var body = req.body
   var file = req.file
-  console.log(body);
   var { postId } = await CountModel.findOneAndUpdate({}, { $inc : { postId : 1 } }, { upsert : true , new : true}); 
 
   fs.renameSync( path.join('./public/uploads' , file.filename) , path.join('./public/uploads' , file.filename + '.png') );
@@ -160,7 +159,6 @@ var cmsUpdate = (req,res,next) => {
 }
 var cmsRemove = (req,res,next) => {
   var postId = req.query.postId;
-  console.log(postId);
     PostModel.deleteOne({ postId }).then((info)=>{
         if(info){
             res.json({
@@ -187,7 +185,6 @@ var cmsRemove = (req,res,next) => {
 }
 var list = (req,res,next) => {
   var type = req.query.goodsType
-  console.log(type);
   PostModel.find({goodsType : type}).sort({date : -1}).then((info) => {
     if(info){
       res.json({

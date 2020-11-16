@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-var infos = require('./info')
-console.log(infos)
+var history = require('connect-history-api-fallback');
+
 
 
 var indexRouter = require('./routes/index');
@@ -39,7 +39,15 @@ app.use('/api/admin', adminRouter);
 app.use('/api/post', postRouter);
 app.use('/api/active', activeRouter);
 
+app.use('/cms' , express.static(path.join(__dirname , "public/cms")));
+app.use('/app' , express.static(path.join(__dirname , "public/app")));
 
+app.use(history({
+  rewrites:[
+    {from:/^\/app/,to:"app/index.html"},
+    {from:/^\/cms/,to:"cms/index.html"}
+  ]
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

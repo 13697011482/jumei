@@ -13,6 +13,9 @@
           <el-form-item label="活动类型">
             <el-input v-model="form.activeType"></el-input>
           </el-form-item>
+          <el-form-item label="优惠">
+            <el-input v-model="form.disCount"></el-input>
+          </el-form-item>
           <el-form-item label="小图">
             <el-input v-model="form.smIcon"></el-input>
           </el-form-item>
@@ -44,7 +47,8 @@ export default {
       form : {
         activeName : '',
         activeType : '',
-        smIcon : ''
+        smIcon : '',
+        disCount : ''
       },
       activeImage : '',
       OldimageUrl : '',
@@ -63,6 +67,7 @@ export default {
           params.append('activeName',this.form.activeName);
           params.append('activeType',this.form.activeType);
           params.append('smIcon',this.form.smIcon);
+          params.append('disCount',this.form.disCount);
           params.append('activeImage',this.activeImage);
           params.append('OldimageUrl',this.OldimageUrl);
           params.append('postId',this.postId);

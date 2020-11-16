@@ -11,6 +11,9 @@
       <el-form-item label="活动类型">
         <el-input v-model="form.activeType"></el-input>
       </el-form-item>
+      <el-form-item label="优惠">
+        <el-input v-model="form.disCount"></el-input>
+      </el-form-item>
       <el-form-item label="小图">
         <el-input v-model="form.smIcon"></el-input>
       </el-form-item>
@@ -41,7 +44,8 @@ export default {
       form: {
         activeName: "",
         activeType: "",
-        smIcon : ""
+        smIcon : "",
+        disCount : ""
       },
       activeImage: "",
       file: {},
@@ -56,12 +60,12 @@ export default {
       // 利用elementUI自带的上传控件
 
       var file = this.file;
-      console.log(file);
       var params = new FormData();
       params.append("filename", file);
       params.append("activeName", this.form.activeName);
       params.append("activeType", this.form.activeType);
       params.append("smIcon", this.form.smIcon);
+      params.append("disCount", this.form.disCount);
       params.append("activeImage", this.activeImage);
 
       this.$axios
@@ -69,7 +73,6 @@ export default {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
-          console.log(res.data.code);
           if (res.data.code == 0) {
             this.$message({
               message: "恭喜你，添加活动成功",

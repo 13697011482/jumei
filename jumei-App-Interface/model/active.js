@@ -5,6 +5,7 @@ var ActiveSchema = mongoose.Schema({
   activeName : { type : String , required :true },
   activeType : { type : String , required : true },
   smIcon : {type : String , required :true },
+  disCount : {type : String , required : true },
   // OldimageUrl : { type : String , required : true },
   postId : { type : Number , required : true },
   date : { type : Date , default : Date.now }
